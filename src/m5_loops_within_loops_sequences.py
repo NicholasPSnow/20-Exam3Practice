@@ -74,7 +74,7 @@ def run_test_integers():
 
     # Test 2:
     expected = [1,2,3,4,5,6,7,8,9,10]
-    answer = integers([(1,2,3,),(4, 'hi',),[5, 2.5, 3, 6],'hello',[],['oops'],[[7], [8]],[9, 10] ])
+    answer = integers([(1,2,3,),(4, 'hi',),[5, 2.5,6],'hello',[],['oops'],[7,8],[9, 10] ])
     print('Expected is:', expected)
     print('Actual is:  ', answer)
 
@@ -102,7 +102,7 @@ def integers(sequence_of_sequences):
       :rtype: list of int
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
     ###########################################################################
@@ -125,12 +125,17 @@ def integers(sequence_of_sequences):
     #    DIFFICULTY:      6
     #    TIME ESTIMATE:  10 minutes.
     # -------------------------------------------------------------------------
-
+    newlist=[]
+    for k in range(len(sequence_of_sequences)):
+        for i in range(len(sequence_of_sequences[k])):
+            if type(sequence_of_sequences[k][i])==int:
+                newlist.append(sequence_of_sequences[k][i])
+    return newlist
 
 def run_test_big_letters():
     """ Tests the    big_letters    function. """
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement this TEST function.
+    # Done: 4. Implement this TEST function.
     #   It TESTS the  big_letters  function defined below.
     #   Include at least ** 1 ** ADDITIONAL test beyond those we wrote.
     # -------------------------------------------------------------------------
@@ -166,6 +171,20 @@ def run_test_big_letters():
     print('Expected is:', expected)
     print('Actual is:  ', answer)
 
+    # Test 2:
+    expected = 'NUD'
+    answer = big_letters([(3, 1, 4),
+                          'Never',
+                          (10, 'Gonna', 'Give'),
+                          [],
+                          ['You'],
+                          'Up',
+                          ['NGLY'],
+                          '1 D !',
+                          ])
+    print('Expected is:', expected)
+    print('Actual is:  ', answer)
+
 
 def big_letters(sequence_of_sequences):
     """
@@ -196,7 +215,7 @@ def big_letters(sequence_of_sequences):
     Precondition:  the given argument is a sequence of sequences.
     """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # Done: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
     ###########################################################################
@@ -218,6 +237,14 @@ def big_letters(sequence_of_sequences):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:  12 minutes.
     # -------------------------------------------------------------------------
+    newlist=''
+    for k in range(len(sequence_of_sequences)):
+        for i in range(len(sequence_of_sequences[k])):
+            if type(sequence_of_sequences[k])==str:
+                if sequence_of_sequences[k][i].isupper()==1:
+                     newlist=newlist+(sequence_of_sequences[k][i])
+
+    return newlist
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
